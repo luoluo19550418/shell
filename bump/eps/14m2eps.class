@@ -1,0 +1,33 @@
+! AIM: DELETE BUMP (14M2EPS)
+! called: 2eps.sh
+
+define double x
+define double y
+let x '(46-&2)/2'
+let y '(&3-46)/2'
+say 'x'
+say 'y'
+
+define double x1
+define double x2
+let x1 &4-10
+let x2 &4+10
+
+dev i b
+file in &1
+set mat 0.2
+find /off x y
+sic output \/home/res/csluo/bump/zhuan/&1.dat
+for i 1 to found
+  get n; plo
+  set mod x x1 x2; plo
+  say 'number'
+
+  if &5.EQ.12
+    sic delete \/home/res/csluo/bump/eps/&1_12CO_'i'.eps
+    hardcopy  \/home/res/csluo/bump/eps/&1_12CO_'i'.eps /dev eps fast
+  end if
+
+next
+sic output
+exit
