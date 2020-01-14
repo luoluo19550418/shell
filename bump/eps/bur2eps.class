@@ -1,0 +1,38 @@
+! AIM: DELETE BUMP (BUR2EPS)
+! called: 2eps.sh
+
+define double x
+define double y
+let x '(46-&2)/2'
+let y '(&3-46)/2'
+say 'x'
+say 'y'
+
+define double x1
+define double x2
+let x1 &4-10
+let x2 &4+10
+
+dev i b
+! sic find \/home/res/csluo/bump/*.bur
+! say 'dir%nfile'
+! for i 1 to 'dir%nfile'
+
+file in &1
+find /off x y
+get f; plo
+set mod x x1 x2; plo
+
+if &5.EQ.12
+  say "12CO processing"
+  sic delete \/home/res/csluo/bump/eps/&1_12CO.eps
+  hardcopy \/home/res/csluo/bump/eps/&1_12CO.eps /dev eps fast
+end if
+!if &5.EQ.18
+!  say "C18O processing"
+!  modify frequency 109782.173;plo
+!  sic delete \/home/res/csluo/bump/eps/&1_C18O.eps
+!  hardcopy \/home/res/csluo/bump/eps/&1_C18O.eps /dev eps fast
+!endif
+
+exit
