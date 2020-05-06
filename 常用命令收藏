@@ -1,1 +1,1 @@
-
+#找1行10列大于60的值：sed -n "1p" filename | awk '$10>=60' | awk '{print $10}'
